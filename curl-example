@@ -1,0 +1,3 @@
+curl -X POST \
+  --user "jenkins_user:your_api_token" \
+  "$JENKINS_URL/job/$JOB_NAME/buildWithParameters?INSTANCE_ID=$INSTANCE_ID"
