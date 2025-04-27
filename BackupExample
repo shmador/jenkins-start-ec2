@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'INSTANCE_ID')
+        string(name: 'REGION', defaultValue: 'il-central-1')
+        string(name: 'CRED_ID', defaultValue: 'aws-cred')
+        booleanParam(name: 'START', defaultValue: true, description: 'Whether to start or stop this instance')
+    }
+    stages {
+        stage('Set action type') {
+            steps {
+                script {
+                    env.ACTION = params.START ? 'start' : 'stop'
+                }
+            }
+        }
+        stage('Start EC2 instance by ID') {
+            steps {
+                sh '''
+                    aws ec2 ${ACTION}-instances --instance-ids ${INSTANCE_ID} --region ${REGION}
+                '''
+            }
+        }
+    }
+}
