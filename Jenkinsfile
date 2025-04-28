@@ -3,7 +3,7 @@ pipeline {
     parameters {
         string(name: 'INSTANCE_ID')
         string(name: 'REGION', defaultValue: 'il-central-1')
-        string(name: 'CRED_ID', defaultValue: 'e154818c-e253-4c7a-9955-4c0cf6da708c')
+        string(name: 'CRED_ID', defaultValue: '05e6adcb-0128-4101-bca4-350064a1de3d')
         booleanParam(name: 'START', defaultValue: true, description: 'Whether to start or stop this instance')
     }
     stages {
