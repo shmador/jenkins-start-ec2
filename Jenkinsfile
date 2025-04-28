@@ -3,7 +3,7 @@ pipeline {
     parameters {
         string(name: 'INSTANCE_ID')
         string(name: 'REGION',    defaultValue: 'il-central-1')
-        string(name: 'CRED_ID',   defaultValue: '05e6adcb-0128-4101-bca4-350064a1de3d')
+        string(name: 'CRED_ID',   defaultValue: 'aws-imtech')
     }
     stages {
         stage('Get EC2 State') {
