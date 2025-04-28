@@ -19,11 +19,9 @@ pipeline {
                             script: "aws ec2 describe-instances --instance-ids ${env.INSTANCE_ID} --query 'Reservations[0].Instances[0].State.Name' --output text",
                             returnStdout: true
                         ).trim()
+			echo "${EC2_STATE}
                         if (EC2_STATE == 'running') {
                             "aws ec2 stop-instances --instance-ids ${INSTANCE_ID} --region ${REGION}"
-                        }
-                        else if (EC2_STATE == 'stopped') {
-                            "aws ec2 start-instances --instance-ids ${INSTANCE_ID} --region ${REGION}"
                         }
                     }
                 }
