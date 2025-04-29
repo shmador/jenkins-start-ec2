@@ -20,8 +20,8 @@ pipeline {
                             returnStdout: true
                         ).trim()
 			echo "${EC2_STATE}
-                        if (EC2_STATE == 'running') {
-                            "aws ec2 stop-instances --instance-ids ${INSTANCE_ID} --region ${REGION}"
+                        if (EC2_STATE == 'stopped') {
+                            sh "aws ec2 start-instances --instance-ids ${INSTANCE_ID} --region ${REGION}"
                         }
                     }
                 }
